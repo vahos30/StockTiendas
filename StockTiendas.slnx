@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="StockTiendas.Application/StockTiendas.Application.csproj" />
+  <Project Path="StockTiendas.Domain/StockTiendas.Domain.csproj" />
+  <Project Path="StockTiendas.Infrastructure/StockTiendas.Infrastructure.csproj" />
+  <Project Path="StockTiendas.Tests/StockTiendas.Tests.csproj" />
   <Project Path="StockTiendas/StockTiendas.csproj" />
 </Solution>

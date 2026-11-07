@@ -4,3 +4,11 @@ GET {{StockTiendas_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+POST {{StockTiendas_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Hamilton Beach",
+  "sku": "502626-40094581498"
+}
