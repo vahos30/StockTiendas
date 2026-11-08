@@ -37,14 +37,17 @@ public sealed class ProductsController(
 
     [HttpGet]
     public async Task<ActionResult<IReadOnlyCollection<object>>> List(
-        CancellationToken cancellationToken)
+        [FromQuery] bool refresh = false,
+        CancellationToken cancellationToken = default)
     {
         var products = await listProductsService.ExecuteAsync(
             new ListProductsQuery(),
+            refresh,
             cancellationToken);
 
         return Ok(products);
     }
 }
+
 
 public sealed record RegisterProductRequest(string Name, string Sku);
