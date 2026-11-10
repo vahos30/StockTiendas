@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using StockTiendas.Application.Products;
 using StockTiendas.Infrastructure;
+using StockTiendas.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,11 +21,20 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<GetProductAvailabilityService>();
 builder.Services.AddScoped<RegisterProductService>();
 builder.Services.AddScoped<ListProductsService>();
+
+
 builder.Services.AddInfrastructure(
-    builder.Configuration.GetConnectionString("StockTiendas")
-    ?? throw new InvalidOperationException("No se configuró la conexión StockTiendas."));
+    builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("No se configuró la conexión DefaultConnection."));
 
 var app = builder.Build();
+
+// Aplicar migraciones y crear la base de datos automáticamente al arrancar
+await using (var scope = app.Services.CreateAsyncScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<StockTiendasDbContext>();
+    await dbContext.Database.MigrateAsync();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
