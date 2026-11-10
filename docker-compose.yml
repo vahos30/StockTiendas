@@ -1,14 +1,14 @@
-name: jvc-tecnofrio-api
+name: jvc-electroestilo-stock-api
 
 services:
-  jvc-tecnofrio-api:
+  jvc-electroestilo-stock-api:
     build: .
-    container_name: jvc-tecnofrio-api
+    container_name: jvc-electroestilo-stock-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Server=mssql-db;Database=SistemaInventario;User Id=sa;Password=F90XAg3aiF£7;TrustServerCertificate=True;
+      - ConnectionStrings__DefaultConnection=Server=mssql-db;Database=StockTiendasDB;User Id=sa;Password=F90XAg3aiF£7;TrustServerCertificate=True;
     ports:
-      - "5000:8080"
+      - "5003:8080"
     restart: always
     networks:
       - mssql_network
