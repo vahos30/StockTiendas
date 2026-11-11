@@ -9,7 +9,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("FrontendLocal", policy =>
         policy
-            .WithOrigins("http://localhost:3000", "http://72.61.70.114:3003")
+            .WithOrigins("http://localhost:3000", "http://72.61.70.114:3003", "https://stocktiendas.jvcsoluciones.cloud")
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
